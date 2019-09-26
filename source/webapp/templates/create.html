@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Add Item{% endblock %}
+{% block menu %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+{% endblock %}
+{% block content %}
+    <h1 class="main_header">Add new Item</h1>
+    <div class="form_container">
+        <form class="my_form" method="POST" action="{% url "good_add" %}">
+            {% include 'partial/good_form.html' with button_text="Create" %}
+        </form>
+    </div>
+{% endblock %}

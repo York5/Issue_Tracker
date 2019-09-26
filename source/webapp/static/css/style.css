@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.custom_nav {
+    background-color:  #00004d;
+}
+.new_review_btn{
+    font-size: 20px;
+    margin-left: 20px;
+}
+.new_nav_btn {
+    color: white;
+}
+.my_logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+.my_logo img {
+    margin-top: 20px;
+}
+.main_header {
+    text-align: center;
+    margin-top: 30px;
+}
+.my_card {
+    padding: 15px 15px 5px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.card_names {
+    font-weight: bold;
+}
+.card_header_link {
+    text-decoration: none;
+    color: black;
+}
+.sep_line {
+    color: #212529
+}
+.card_links a {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 30px;
+}
+.edit_icon {
+    color: #00004d;
+}
+.card_links a:hover{
+    color: dimgrey;
+}
+.trash_can {
+    color:#ff6600;
+}
+.delete_header {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+.field-error {
+    border: solid 1px red;
+    box-shadow: red 0 0 3px;
+}
+.field_required {
+    font-weight: bold;
+    color: red;
+}
+.my_form {
+    margin-right: auto;
+    margin-left: auto;
+}
+.p_cancel {
+    display: flex;
+}
+.my_confirm {
+    font-size: 20px;
+}
+.cancel {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px
+}
+
