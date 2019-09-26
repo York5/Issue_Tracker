@@ -3,13 +3,14 @@
 {% block menu %}
     <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
   <a class="navbar-brand" href="{% url 'index' %}">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link new_review_btn" href="{% url 'good_add' %}">+ Add Product <span class="sr-only">(current)</span></a>
+        <a class="nav-link new_review_btn" href="{% url 'issue_add' %}">+ Add Product <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -25,17 +26,17 @@
     </div>
     <hr/>
     <div class="row justify-content-center">
-        {% for good in goods %}
+        {% for issue in issues %}
             <div class="card border-dark mb-3 my_card" style="width: 18rem;">
                 <div class="card-body d-flex flex-column" >
-                    <a class="card_header_link" href="{% url 'good_view' good.pk %}"><h5 class="card-title card_names">{{ good.name }}</h5></a>
-                    <h6 class="card-subtitle mb-2 text-muted">Category: {{ good.get_category_display }}</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">Left in Stock: {{ good.stock }}</h6>
-                    <h5 class="card-subtitle mb-2">Price: {{ good.price }}</h5>
-                    <p class="card-text">{{ good.description }}</p>
+                    <a class="card_header_link" href="{% url 'issue_view' good.pk %}"><h5 class="card-title card_names">{{ issue.name }}</h5></a>
+                    <h6 class="card-subtitle mb-2 text-muted">Status: {{ issue.status }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Type: {{ issue.type }}</h6>
+                    <h5 class="card-subtitle mb-2">Created: {{ issue.created_at|date:'d.m.Y H:i:s' }}</h5>
+                    <p class="card-text">{{ issue.description }}</p>
                     <div class="card_links mt-auto row justify-content-center">
-                        <a href="{% url "good_edit" good.pk %}" class="edit_icon"><i class="fas fa-pencil-alt"></i></a>
-                        <a href="{% url "good_delete" good.pk %}" class="card-link trash_can"><i class="fas fa-trash-alt"></i></a>
+                        <a href="{% url "issue_edit" issue.pk %}" class="edit_icon"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="{% url "Issue_delete" issue.pk %}" class="card-link trash_can"><i class="fas fa-trash-alt"></i></a>
                     </div>
                 </div>
             </div>

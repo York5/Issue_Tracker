@@ -10,10 +10,10 @@
 </nav>
 {% endblock %}
 {% block content %}
-    <h1 class="main_header">Add new Item</h1>
+    <h1 class="main_header">Add new Issue</h1>
     <div class="form_container">
-        <form class="my_form" method="POST" action="{% url "good_add" %}">
-            {% include 'partial/good_form.html' with button_text="Create" %}
+        <form class="my_form" method="POST" action="{% url "issue_add" %}">
+            {% include 'partial/issue_form.html' with button_text="Create" %}
         </form>
     </div>
 {% endblock %}

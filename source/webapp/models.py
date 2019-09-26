@@ -17,6 +17,16 @@ class Issue(models.Model):
 class Status(models.Model):
     status_name = models.CharField(max_length=20, verbose_name='Name')
 
+    def __str__(self):
+        return self.status_name
+
+    class Meta:
+        verbose_name = 'Status'
+        verbose_name_plural = 'Statuses'
+
 
 class Type(models.Model):
     type_name = models.CharField(max_length=20, verbose_name='Name')
+
+    def __str__(self):
+        return self.type_name
