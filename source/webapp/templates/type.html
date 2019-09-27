@@ -3,16 +3,16 @@
 {% block menu %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{% url 'index' %}">Home</a>
-        <a class="navbar-brand" href="{% url 'status_index' %}">Statuses</a>
-        <a class="nav-link new_nav_btn" href="{% url 'status_delete' status.pk %}">Delete<span class="sr-only">(current)</span></a>
-        <a class="nav-link new_nav_btn" href="{% url 'status_update' status.pk %}">Edit<span class="sr-only">(current)</span></a>
+        <a class="navbar-brand" href="{% url 'type_index' %}">Types</a>
+        <a class="nav-link new_nav_btn" href="{% url 'type_delete' type.pk %}">Delete<span class="sr-only">(current)</span></a>
+        <a class="nav-link new_nav_btn" href="{% url 'type_update' type.pk %}">Edit<span class="sr-only">(current)</span></a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </nav>
 {% endblock %}
-{% block title %}{{ status.status_name }}{% endblock %}
+{% block title %}{{ type.type_name }}{% endblock %}
 {% block content %}
-    <h1 class="main_header"><b>{{ status.status_name}}</b></h1>
+    <h1 class="main_header"><b>{{ type.type_name}}</b></h1>
 {% endblock %}

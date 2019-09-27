@@ -9,5 +9,10 @@ class IssueForm(forms.Form):
     status = forms.ModelChoiceField(queryset=Status.objects.all(), required=True, label='Status', empty_label=None)
     type = forms.ModelChoiceField(queryset=Type.objects.all(), required=True, label='Type', empty_label=None)
 
+
 class StatusForm(forms.Form):
-    
+    status_name = forms.CharField(max_length=30, required=True, label='Status')
+
+
+class TypeForm(forms.Form):
+    type_name = forms.CharField(max_length=30, required=True, label='Type')
