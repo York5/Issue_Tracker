@@ -9,9 +9,9 @@
     </nav>
 {% endblock %}
 {% block content %}
-    <h1 class="delete_header">Are you sure you want to delete Item: {{ good.name }}?</h1>
+    <h1 class="delete_header">Are you sure you want to delete this Issue?</h1>
     <div class="form_container d-flex">
-        <form class="my_form mt-3" method="POST" action="{% url "good_delete" good.pk %}">
+        <form class="my_form mt-3" method="POST" action="{% url "issue_delete" issue.pk %}">
             {% csrf_token %}
             <p><input type="submit" class="btn btn-danger my_confirm" value="Confirm Delete"></p>
             <p class="p_cancel"><a  href="{% url 'index' %}" class="cancel btn btn-success btn-lg active" role="button" aria-pressed="true">Cancel</a></p>
