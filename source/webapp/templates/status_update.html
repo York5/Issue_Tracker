@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}Add Issue{% endblock %}
+{% block title %}Update Status{% endblock %}
 {% block menu %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+        <a class="navbar-brand" href="{% url 'status_index' %}">Statuses</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 </nav>
 {% endblock %}
 {% block content %}
-    <h1 class="main_header">Add new Issue</h1>
+    <h1 class="main_header">Update this Status</h1>
     <div class="form_container">
-        <form class="my_form" method="POST" action="{% url "issue_add" %}">
-            {% include 'partial/issue_form.html' with button_text="Create" %}
+        <form class="my_form" method="POST" action="{% url "status_update" status.pk %}">
+            {% include 'partial/issue_form.html' with button_text="Update" %}
         </form>
     </div>
 {% endblock %}
