@@ -4,26 +4,18 @@ from webapp.forms import StatusForm
 from webapp.models import Status
 from django.http import Http404
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import ListView, DetailView
 
 
-class StatusIndexView(TemplateView):
+class StatusIndexView(ListView):
     template_name = 'statuses/status_index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['statuses'] = Status.objects.all()
-        return context
+    context_object_name = 'statuses'
+    model = Status
 
 
-class StatusView(TemplateView):
+class StatusView(DetailView):
     template_name = 'statuses/status.html'
-
-    def get_context_data(self, **kwargs):
-        pk = kwargs.get('pk')
-        context = super().get_context_data(**kwargs)
-        context['status'] = get_object_or_404(Status, pk=pk)
-        return context
+    model = Status
 
 
 class StatusCreateView(View):

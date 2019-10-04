@@ -4,26 +4,18 @@ from webapp.forms import TypeForm
 from webapp.models import Type
 from django.http import Http404
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import ListView, DetailView
 
 
-class TypeIndexView(TemplateView):
+class TypeIndexView(ListView):
     template_name = 'types/type_index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['types'] = Type.objects.all()
-        return context
+    context_object_name = 'types'
+    model = Type
 
 
-class TypeView(TemplateView):
+class TypeView(DetailView):
     template_name = 'types/type.html'
-
-    def get_context_data(self, **kwargs):
-        pk = kwargs.get('pk')
-        context = super().get_context_data(**kwargs)
-        context['type'] = get_object_or_404(Type, pk=pk)
-        return context
+    model = Type
 
 
 class TypeCreateView(View):

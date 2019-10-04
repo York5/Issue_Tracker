@@ -4,26 +4,21 @@ from webapp.forms import IssueForm
 from webapp.models import Issue
 from django.http import Http404
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import ListView, DetailView
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = 'issues/index.html'
+    context_object_name = 'issues'
+    model = Issue
+    ordering = ['-created_at']
+    # paginate_by = 5
+    # paginate_orphans = 1
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['issues'] = Issue.objects.all()
-        return context
 
-
-class IssueView(TemplateView):
+class IssueView(DetailView):
     template_name = 'issues/issue.html'
-
-    def get_context_data(self, **kwargs):
-        pk = kwargs.get('pk')
-        context = super().get_context_data(**kwargs)
-        context['issue'] = get_object_or_404(Issue, pk=pk)
-        return context
+    model = Issue
 
 
 class IssueCreateView(View):
