@@ -12,8 +12,8 @@ class IndexView(ListView):
     context_object_name = 'issues'
     model = Issue
     ordering = ['-created_at']
-    # paginate_by = 5
-    # paginate_orphans = 1
+    paginate_by = 2
+    paginate_orphans = 1
 
 
 class IssueView(DetailView):
