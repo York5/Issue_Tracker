@@ -5,7 +5,7 @@ from webapp.forms import IssueForm
 from webapp.models import Issue
 from django.http import Http404
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 
 class IndexView(ListView):
@@ -13,7 +13,7 @@ class IndexView(ListView):
     context_object_name = 'issues'
     model = Issue
     ordering = ['-created_at']
-    paginate_by = 2
+    paginate_by = 3
     paginate_orphans = 1
 
 
@@ -51,3 +51,13 @@ class IssueDeleteView(View):
         issue = get_object_or_404(Issue, pk=pk)
         issue.delete()
         return redirect('index')
+
+
+class IssueDelete(DeleteView):
+    model = Issue
+    template_name = 'issues/delete.html'
+
+    def get_success_url(self):
+        return reverse('index')
+
+
