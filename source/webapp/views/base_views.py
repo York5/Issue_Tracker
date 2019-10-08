@@ -30,21 +30,6 @@ class UpdateView(View):
     def form_invalid(self, form):
         return render(self.request, self.template_name, context={'form': form})
 
-#
-# class DetailView(TemplateView):
-#     context_key = 'object'
-#     model = None
-#     key_kwarg = 'pk'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context[self.context_key] = self.get_object()
-#         return context
-#
-#     def get_object(self):
-#         pk = self.kwargs.get(self.key_kwarg)
-# return get_object_or_404(self.model, pk=pk)
-
 
 class DeleteView(View):
     model = None
@@ -52,14 +37,22 @@ class DeleteView(View):
     template_name = None
     redirect_url = None
     context_key = 'object'
+    confirm = True
 
     def get(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         self.object = get_object_or_404(self.model, pk=pk)
-        return render(request, self.template_name, context={self.context_key: self.object})
+        if self.confirm:
+            return render(request, self.template_name, context={self.context_key: self.object})
+        else:
+            self.object.delete()
+            return redirect(self.redirect_url)
 
     def post(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         self.object = get_object_or_404(self.model, pk=pk)
         self.object.delete()
-        return redirect(self.redirect_url())
+        return redirect(self.redirect_url)
+
+    def get_redirect_url(self):
+        return self.redirect_url

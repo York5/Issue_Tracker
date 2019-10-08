@@ -5,7 +5,9 @@ from webapp.forms import TypeForm
 from webapp.models import Type
 from django.http import Http404
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView
+
+from webapp.views.base_views import DeleteView, UpdateView
 
 
 class TypeIndexView(ListView):
@@ -37,14 +39,10 @@ class TypeUpdateView(UpdateView):
         return reverse('type_view', kwargs={'pk': self.object.pk})
 
 
-class TypeDeleteView(View):
-    def get(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        type = get_object_or_404(Type, pk=pk)
-        return render(request, 'types/type_delete.html', context={'type': type})
+class TypeDeleteView(DeleteView):
+    model = Type
+    confirm = True
+    template_name = 'types/type_delete.html'
 
-    def post(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        type = get_object_or_404(Type, pk=pk)
-        type.delete()
-        return redirect('type_index')
+    def get_success_url(self):
+        return reverse('type_index')

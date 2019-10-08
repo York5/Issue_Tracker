@@ -5,7 +5,9 @@ from webapp.forms import IssueForm
 from webapp.models import Issue
 from django.http import Http404
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView
+
+from webapp.views.base_views import DeleteView, UpdateView
 
 
 class IndexView(ListView):
@@ -40,9 +42,10 @@ class IssueUpdateView(UpdateView):
         return reverse('issue_view', kwargs={'pk': self.object.pk})
 
 
-class IssueDelete(DeleteView):
+class IssueDeleteView(DeleteView):
     model = Issue
     template_name = 'issues/delete.html'
+    confirm = True
 
     def get_success_url(self):
         return reverse('index')
