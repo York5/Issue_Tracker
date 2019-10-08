@@ -40,19 +40,6 @@ class IssueUpdateView(UpdateView):
         return reverse('issue_view', kwargs={'pk': self.object.pk})
 
 
-class IssueDeleteView(View):
-    def get(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        issue = get_object_or_404(Issue, pk=pk)
-        return render(request, 'issues/delete.html', context={'issue': issue})
-
-    def post(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        issue = get_object_or_404(Issue, pk=pk)
-        issue.delete()
-        return redirect('index')
-
-
 class IssueDelete(DeleteView):
     model = Issue
     template_name = 'issues/delete.html'
