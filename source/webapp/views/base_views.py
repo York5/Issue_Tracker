@@ -3,45 +3,45 @@ from django.views import View
 from django.views.generic import TemplateView
 
 
-class ListView(TemplateView):
-    context_key = 'objects'
-    model = None
+# class ListView(TemplateView):
+#     context_key = 'objects'
+#     model = None
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context[self.context_key] = self.get_objects()
+#         return context
+#
+#     def get_objects(self):
+#         return self.model.objects.all()
+#
+#
+# class DetailView(TemplateView):
+#     context_key = 'object'
+#     model = None
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context[self.context_key] = self.get_object()
+#         return context
+#
+#     def get_object(self):
+#         pk = self.kwargs.get(self.key_kwarg)
+#         return get_object_or_404(self.model, pk=pk)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context[self.context_key] = self.get_objects()
-        return context
 
-    def get_objects(self):
-        return self.model.objects.all()
-
-
-class DetailView(TemplateView):
-    context_key = 'object'
-    model = None
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context[self.context_key] = self.get_object()
-        return context
-
-    def get_object(self):
-        pk = self.kwargs.get(self.key_kwarg)
-        return get_object_or_404(self.model, pk=pk)
-
-
-class CreateView(View):
-    form_class = None
+class UpdateView(View):
+    fields = None
     template_name = None
     model = None
     redirect_url = None
 
     def get(self, request, *args, **kwargs):
-        form = self.form_class()
+        form = self.fields()
         return render(request, self.template_name, context={'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(data=request.POST)
+        form = self.fields(data=request.POST)
         if form.is_valid():
             return self.form_valid(form)
         else:

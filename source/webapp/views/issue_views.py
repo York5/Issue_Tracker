@@ -5,7 +5,7 @@ from webapp.forms import IssueForm
 from webapp.models import Issue
 from django.http import Http404
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 
 class IndexView(ListView):
@@ -23,40 +23,21 @@ class IssueView(DetailView):
 
 
 class IssueCreateView(CreateView):
-    form_class = IssueForm
     model = Issue
     template_name = 'issues/create.html'
+    fields = ['summary', 'description', 'status', 'type']
 
     def get_success_url(self):
         return reverse('issue_view', kwargs={'pk': self.object.pk})
 
 
-class IssueUpdateView(View):
-    def get(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        issue = get_object_or_404(Issue, pk=pk)
-        form = IssueForm(data={
-            'summary': issue.summary,
-            'description': issue.description,
-            'status': issue.status_id,
-            'type': issue.type_id,
-            })
-        return render(request, 'issues/update.html', context={'form': form, 'issue': issue})
+class IssueUpdateView(UpdateView):
+    model = Issue
+    fields = ['summary', 'description', 'status', 'type']
+    template_name = 'issues/update.html'
 
-    def post(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        issue = get_object_or_404(Issue, pk=pk)
-        form = IssueForm(data=request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            issue.summary = data['summary']
-            issue.description = data['description']
-            issue.status = data['status']
-            issue.type = data['type']
-            issue.save()
-            return redirect('issue_view', pk=issue.pk)
-        else:
-            return render(request, 'issues/update.html', context={'form': form, 'issue': issue})
+    def get_success_url(self):
+        return reverse('issue_view', kwargs={'pk': self.object.pk})
 
 
 class IssueDeleteView(View):

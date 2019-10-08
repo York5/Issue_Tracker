@@ -5,7 +5,7 @@ from webapp.forms import StatusForm
 from webapp.models import Status
 from django.http import Http404
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 
 class StatusIndexView(ListView):
@@ -22,33 +22,19 @@ class StatusView(DetailView):
 class StatusCreateView(CreateView):
     model = Status
     template_name = 'statuses/status_create.html'
-    form_class = StatusForm
+    fields = ['status_name']
 
     def get_success_url(self):
         return reverse('status_view', kwargs={'pk': self.object.pk})
 
 
-class StatusUpdateView(View):
-    def get(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        status = get_object_or_404(Status, pk=pk)
-        form = StatusForm(data={
-            'status_name': status.status_name,
-            })
-        return render(request, 'statuses/status_update.html', context={'form': form, 'status': status})
+class StatusUpdateView(UpdateView):
+    model = Status
+    fields = ['status_name']
+    template_name = 'statuses/status_update.html'
 
-    def post(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        status = get_object_or_404(Status, pk=pk)
-        form = StatusForm(data=request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            status.status_name = data['status_name']
-            status.save()
-            return redirect('status_view', pk=status.pk)
-        else:
-            return render(request, 'statuses/status_update.html', context={'form': form, 'status': status})
-
+    def get_success_url(self):
+        return reverse('status_view', kwargs={'pk': self.object.pk})
 
 class StatusDeleteView(View):
     def get(self, request, *args, **kwargs):

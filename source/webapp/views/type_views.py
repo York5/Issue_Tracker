@@ -5,7 +5,7 @@ from webapp.forms import TypeForm
 from webapp.models import Type
 from django.http import Http404
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 
 class TypeIndexView(ListView):
@@ -22,32 +22,19 @@ class TypeView(DetailView):
 class TypeCreateView(CreateView):
     model = Type
     template_name = 'types/type_create.html'
-    form_class = TypeForm
+    fields = ['type_name']
 
     def get_success_url(self):
         return reverse('type_view', kwargs={'pk': self.object.pk})
 
 
-class TypeUpdateView(View):
-    def get(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        type = get_object_or_404(Type, pk=pk)
-        form = TypeForm(data={
-            'type_name': type.type_name,
-            })
-        return render(request, 'types/type_update.html', context={'form': form, 'type': type})
+class TypeUpdateView(UpdateView):
+    model = Type
+    fields = ['type_name']
+    template_name = 'types/type_update.html'
 
-    def post(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        type = get_object_or_404(Type, pk=pk)
-        form = TypeForm(data=request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            type.type_name = data['type_name']
-            type.save()
-            return redirect('type_view', pk=type.pk)
-        else:
-            return render(request, 'types/type_update.html', context={'form': form, 'type': type})
+    def get_success_url(self):
+        return reverse('type_view', kwargs={'pk': self.object.pk})
 
 
 class TypeDeleteView(View):
@@ -60,3 +47,4 @@ class TypeDeleteView(View):
         pk = kwargs.get('pk')
         type = get_object_or_404(Type, pk=pk)
         type.delete()
+        return redirect('type_index')
