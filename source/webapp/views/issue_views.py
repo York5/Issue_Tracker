@@ -43,11 +43,11 @@ class IssueUpdateView(UpdateView):
 
 
 class IssueDeleteView(DeleteView):
+    context_key = 'issue'
     model = Issue
     template_name = 'issues/delete.html'
     confirm = True
+    redirect_url = '/'
 
-    def get_success_url(self):
-        return reverse('index')
 
 

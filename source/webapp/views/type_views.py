@@ -40,9 +40,9 @@ class TypeUpdateView(UpdateView):
 
 
 class TypeDeleteView(DeleteView):
+    context_key = 'type'
     model = Type
     confirm = True
     template_name = 'types/type_delete.html'
+    redirect_url = '/types'
 
-    def get_success_url(self):
-        return reverse('type_index')

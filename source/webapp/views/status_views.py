@@ -40,6 +40,7 @@ class StatusUpdateView(UpdateView):
 
 
 class StatusDeleteView(DeleteView):
+    context_key = 'status'
     model = Status
     confirm = False
     template_name = 'statuses/status_delete.html'
