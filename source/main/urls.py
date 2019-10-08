@@ -26,11 +26,13 @@ urlpatterns = [
     path('issue/<int:pk>', IssueView.as_view(), name='issue_view'),
     path('issue/<int:pk>/update/', IssueUpdateView.as_view(), name='issue_update'),
     path('issue/<int:pk>/delete/', IssueDeleteView.as_view(), name='issue_delete'),
+
     path('statuses', StatusIndexView.as_view(), name='status_index'),
     path('statuses/status/<int:pk>', StatusView.as_view(), name='status_view'),
     path('statuses/status/add/', StatusCreateView.as_view(), name='status_add'),
     path('statuses/status/<int:pk>/update/', StatusUpdateView.as_view(), name='status_update'),
     path('statuses/status/<int:pk>/delete/', StatusDeleteView.as_view(), name='status_delete'),
+
     path('types', TypeIndexView.as_view(), name='type_index'),
     path('types/type/<int:pk>', TypeView.as_view(), name='type_view'),
     path('types/type/add/', TypeCreateView.as_view(), name='type_add'),
