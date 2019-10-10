@@ -1,13 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
-
+from django.urls import reverse, reverse_lazy
 from webapp.forms import IssueForm
 from webapp.models import Issue
-from django.http import Http404
-from django.views import View
-from django.views.generic import ListView, DetailView, CreateView
-
-from webapp.views.base_views import DeleteView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 
 class IndexView(ListView):
@@ -35,19 +29,18 @@ class IssueCreateView(CreateView):
 
 class IssueUpdateView(UpdateView):
     model = Issue
-    fields = ['summary', 'description', 'status', 'type']
     template_name = 'issues/update.html'
+    form_class = IssueForm
+    context_object_name = 'issue'
 
     def get_success_url(self):
         return reverse('issue_view', kwargs={'pk': self.object.pk})
 
 
 class IssueDeleteView(DeleteView):
-    context_key = 'issue'
     model = Issue
     template_name = 'issues/delete.html'
-    confirm = True
-    redirect_url = '/'
-
+    context_object_name = 'issue'
+    success_url = reverse_lazy('index')
 
 

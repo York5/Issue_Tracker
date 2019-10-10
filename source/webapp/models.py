@@ -6,7 +6,7 @@ class Issue(models.Model):
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Description')
     status = models.ForeignKey('Status', on_delete=models.PROTECT, null=False, blank=False, verbose_name='Status',
                                related_name='issues')
-    type = models.ForeignKey('Type', on_delete=models.PROTECT, null=False, blank=False, verbose_name='Status',
+    type = models.ForeignKey('Type', on_delete=models.PROTECT, null=False, blank=False, verbose_name='Type',
                              related_name='issues')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Time Created')
 
