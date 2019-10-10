@@ -1,6 +1,13 @@
 from django.db import models
 
 
+class Project(models.Model):
+    name = models.CharField(max_length=200, null=False, blank=False, verbose_name='Project Name')
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Description')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Time Created')
+    updated_at = models.DateTimeField(auto_now_add=True, verbose_name='Time Updated')
+
+
 class Issue(models.Model):
     summary = models.CharField(max_length=100, null=False, blank=False, verbose_name='Name')
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Description')
@@ -8,6 +15,8 @@ class Issue(models.Model):
                                related_name='issues')
     type = models.ForeignKey('Type', on_delete=models.PROTECT, null=False, blank=False, verbose_name='Type',
                              related_name='issues')
+    project = models.ForeignKey('Project', on_delete=models.PROTECT, null=True, blank=False, verbose_name='Project',
+                                related_name='issues')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Time Created')
 
     def __str__(self):
@@ -30,3 +39,4 @@ class Type(models.Model):
 
     def __str__(self):
         return self.type_name
+
