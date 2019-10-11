@@ -1,11 +1,16 @@
 from django.db import models
 
+ACTIVE = 'active'
+STATUS_CHOICES = [(ACTIVE, 'Active'), ('closed', 'Closed')]
+
 
 class Project(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False, verbose_name='Project Name')
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Description')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Time Created')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Time Updated')
+    status = models.CharField(max_length=40, null=False, blank=False, verbose_name='Status', default=ACTIVE,
+                              choices=STATUS_CHOICES)
 
     def __str__(self):
         return self.name
