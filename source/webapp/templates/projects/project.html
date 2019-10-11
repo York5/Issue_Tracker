@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block menu %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="{% url 'index' %}">Home</a>
         <a class="navbar-brand" href="{% url 'project_index' %}">Projects</a>
         <a class="nav-link new_nav_btn" href="{% url 'project_delete' project.pk %}">Delete<span class="sr-only">(current)</span></a>
@@ -16,24 +16,73 @@
     <h1 class="main_header"><b>{{ project.name}}</b></h1>
     <h5>Created: <b>{{ project.created_at|date:'d.m.Y H:i:s' }}</b></h5>
     <h5>Updated: <b>{{ project.updated_at|date:'d.m.Y H:i:s' }}</b></h5>
+    {% if project.status == 'active' %}
+        <h5>Project Status: <b class="active_status">{{ project.get_status_display }}</b></h5>
+    {% else %}
+        <h5>Project Status: <b class="closed_status">{{ project.get_status_display }}</b></h5>
+    {% endif %}
     <p><br>{{ project.description|escape|linebreaks }}</p>
     <hr>
-    <h3>Issues:</h3>
-    {% if is_paginated %}
-        {% include 'partial/pagination.html' %}
-    {% endif %}
+    <h2 class="issues_header"><b>Issues: </b></h2>
     <div class="issue-list">
         {% for issue in issues %}
             <div class="issue">
-                <h1>{{ issue.summary }}</h1>
-                <a class="card_header_link" href="{% url 'issue_view' issue.pk %}"><p>{{ issue.summary }}</p></a>
-                <div class="pre"><p><{{ issue.description }}/p></div>
+                <a class="card_header_link" href="{% url 'issue_view' issue.pk %}"><h3>{{ issue.summary }}</h3></a>
+                <div class="pre">{{ issue.description }}</div>
             </div>
         {% empty %}
             <p>No issues yet.</p>
         {% endfor %}
     </div>
-    {% if is_paginated %}
-        {% include 'partial/pagination.html' %}
-{% endif %}
+    <div class="project_issues_bottom_pagination">
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+    </div>
+{% endblock %}
+{% block footer %}
+<footer class="page-footer my_footer font-small stylish-color-dark pt-4">
+  <div class="container text-center text-md-left">
+    <div class="row">
+      <hr class="clearfix w-100 d-md-none">
+      <div class="col-md-2 mx-auto">
+      <hr class="clearfix w-100 d-md-none">
+    </div>
+  </div>
+  <hr>
+  <ul class="list-unstyled list-inline text-center py-2">
+    <li class="list-inline-item">
+      <h5 class="mb-1">Hope you are enjoying the experience</h5>
+    </li>
+  </ul>
+  <hr>
+  <ul class="list-unstyled list-inline text-center">
+    <li class="list-inline-item">
+      <a class="btn-floating btn-fb mx-1">
+        <i class="fab fa-facebook-f"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-tw mx-1">
+        <i class="fab fa-twitter"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-gplus mx-1">
+        <i class="fab fa-google-plus-g"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-li mx-1">
+        <i class="fab fa-linkedin-in"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-dribbble mx-1">
+        <i class="fab fa-dribbble"> </i>
+      </a>
+    </li>
+  </ul>
+  <div class="footer-copyright text-center py-3">© 2019 Created by: Mikhail Vishin</div>
+</footer>
 {% endblock %}

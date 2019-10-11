@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Delete Project{% endblock %}
 {% block menu %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="{% url 'index' %}">Home</a>
         <a class="navbar-brand" href="{% url 'project_index' %}">Projects</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,4 +18,50 @@
             <p class="p_cancel"><a  href="{% url 'project_index' %}" class="cancel btn btn-success btn-lg active" role="button" aria-pressed="true">Cancel</a></p>
         </form>
     </div>
+{% endblock %}
+{% block footer %}
+<footer class="page-footer my_footer font-small stylish-color-dark pt-4">
+  <div class="container text-center text-md-left">
+    <div class="row">
+      <hr class="clearfix w-100 d-md-none">
+      <div class="col-md-2 mx-auto">
+      <hr class="clearfix w-100 d-md-none">
+    </div>
+  </div>
+  <hr>
+  <ul class="list-unstyled list-inline text-center py-2">
+    <li class="list-inline-item">
+      <h5 class="mb-1">Hope you are enjoying the experience</h5>
+    </li>
+  </ul>
+  <hr>
+  <ul class="list-unstyled list-inline text-center">
+    <li class="list-inline-item">
+      <a class="btn-floating btn-fb mx-1">
+        <i class="fab fa-facebook-f"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-tw mx-1">
+        <i class="fab fa-twitter"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-gplus mx-1">
+        <i class="fab fa-google-plus-g"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-li mx-1">
+        <i class="fab fa-linkedin-in"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-dribbble mx-1">
+        <i class="fab fa-dribbble"> </i>
+      </a>
+    </li>
+  </ul>
+  <div class="footer-copyright text-center py-3">© 2019 Created by: Mikhail Vishin</div>
+</footer>
 {% endblock %}

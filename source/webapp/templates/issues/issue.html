@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block menu %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+        {% if issue.project.status == 'active' %}
         <a class="nav-link new_nav_btn" href="{% url 'issue_delete' issue.pk %}">Delete<span class="sr-only">(current)</span></a>
         <a class="nav-link new_nav_btn" href="{% url 'issue_update' issue.pk %}">Edit<span class="sr-only">(current)</span></a>
-
+        {% endif %}
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

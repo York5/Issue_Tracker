@@ -48,6 +48,10 @@ body {
 .card_links a:hover{
     color: dimgrey;
 }
+.no_edit {
+    color: darkred;
+    font-weight: bold;
+}
 .trash_can {
     color:#ff6600;
 }
@@ -83,8 +87,6 @@ body {
     color: white;
     margin-top: 100px;
 }
-
-
 .pagination {
    text-align: center;
 }
@@ -111,7 +113,24 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+.issue-list {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.issue {
+    border: solid 1px #cccccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+.issues_header {
+    margin-bottom: 20px;
+}
 .bottom_pagination {
+    margin-top: 30px;
+}
+.project_issues_bottom_pagination {
     margin-top: 30px;
 }
 .active_status {
