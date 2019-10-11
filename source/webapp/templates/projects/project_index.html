@@ -31,6 +31,11 @@
                     <hr>
                     <h6 class="card-subtitle mb-2 text-muted">Created: {{ project.created_at|date:'d.m.Y H:i:s' }}</h6>
                     <h6 class="card-subtitle mb-2 text-muted">Updated: {{ project.updated_at|date:'d.m.Y H:i:s' }}</h6>
+                    {% if project.status == 'active' %}
+                        <h6 class="card-subtitle mb-2">Project Status: <b class="active_status">{{ project.get_status_display }}</b></h6>
+                    {% else %}
+                        <h6 class="card-subtitle mb-2">Project Status: <b class="closed_status">{{ project.get_status_display }}</b></h6>
+                    {% endif %}
                     <p class="card-text">{{ project.description }}</p>
                     <div class="card_links mt-auto row justify-content-center">
                         <a href="{% url "project_update" project.pk %}" class="edit_icon"><i class="fas fa-pencil-alt"></i></a>

@@ -85,7 +85,6 @@ body {
 }
 
 
-
 .pagination {
    text-align: center;
 }
@@ -114,4 +113,10 @@ body {
 }
 .bottom_pagination {
     margin-top: 30px;
+}
+.active_status {
+    color: darkgreen;
+}
+.closed_status {
+    color: darkred;
 }
