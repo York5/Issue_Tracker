@@ -1,5 +1,126 @@
 [
 {
+  "model": "webapp.project",
+  "pk": 1,
+  "fields": {
+    "name": "Moon Gateway",
+    "description": "The Lunar Gateway, officially named the Lunar Orbital Platform \u2013 Gateway (LOP-G), is a project to build a space station in lunar orbit intended to serve as a solar-powered communications hub, science laboratory, short-term habitation module, and holding area for rovers and other robots.",
+    "created_at": "2019-10-10T17:51:57.384Z",
+    "updated_at": "2019-10-10T17:51:57.384Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 2,
+  "fields": {
+    "name": "Starship",
+    "description": "The Starship is a fully reusable second stage and space vehicle being privately developed by the private company SpaceX. It is being designed to be a long-duration cargo- and passenger-carrying spacecraft.",
+    "created_at": "2019-10-10T17:54:05.502Z",
+    "updated_at": "2019-10-11T10:03:37.868Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 3,
+  "fields": {
+    "name": "James Webb Telescope",
+    "description": "The James Webb Space Telescope (JWST) is a space telescope that is planned to be the successor to the Hubble Space Telescope.The JWST will provide greatly improved resolution and sensitivity over the Hubble, and will enable a broad range of investigations across the fields of astronomy and cosmology, including observing some of the most distant events and objects in the universe, such as the formation of the first galaxies",
+    "created_at": "2019-10-10T17:56:26.196Z",
+    "updated_at": "2019-10-11T06:38:39.647Z",
+    "status": "closed"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 4,
+  "fields": {
+    "name": "Starlink Sattelite Constellation",
+    "description": "Starlink is a satellite constellation development project underway by American company SpaceX, to develop a low-cost, high-performance satellite bus and requisite customer ground transceivers to implement a new space-based Internet communication system.",
+    "created_at": "2019-10-10T19:27:09.523Z",
+    "updated_at": "2019-10-10T19:27:09.523Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 6,
+  "fields": {
+    "name": "Test Project 1",
+    "description": "Random text for project 1",
+    "created_at": "2019-10-11T09:29:33.418Z",
+    "updated_at": "2019-10-11T10:33:08.115Z",
+    "status": "closed"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 7,
+  "fields": {
+    "name": "Test Project 2",
+    "description": "Some random text for test project 2. Very interesting text",
+    "created_at": "2019-10-11T10:04:30.573Z",
+    "updated_at": "2019-10-11T10:04:30.573Z",
+    "status": "closed"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 8,
+  "fields": {
+    "name": "Test Project 3",
+    "description": "More random text for test project 3",
+    "created_at": "2019-10-11T10:05:48.238Z",
+    "updated_at": "2019-10-11T10:05:48.238Z",
+    "status": "closed"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 9,
+  "fields": {
+    "name": "Crew Dragon",
+    "description": "Dragon 2 or Crew Dragon is a reusable spacecraft developed and manufactured by U.S. aerospace manufacturer SpaceX, intended as the successor to the Dragon cargo spacecraft. The spacecraft launches atop a Falcon 9 Block 5 rocket and returns via ocean splashdown.",
+    "created_at": "2019-10-11T10:37:30.464Z",
+    "updated_at": "2019-10-11T10:37:30.465Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 10,
+  "fields": {
+    "name": "Tesla Full Autopilot",
+    "description": "Tesla Autopilot is an advanced driver-assistance system feature offered by Tesla that has lane centering, adaptive cruise control, self-parking, the ability to automatically change lanes, and the ability to summon the car to and from a garage or parking spot.",
+    "created_at": "2019-10-11T10:40:00.514Z",
+    "updated_at": "2019-10-11T10:40:00.514Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 11,
+  "fields": {
+    "name": "Space Launch System (SLS)",
+    "description": "The Space Launch System is a US super heavy-lift expendable launch vehicle, which is under development as of August 2019. It is the primary launch vehicle of NASA's deep space exploration plans, including the planned crewed lunar flights of the Artemis program and a possible follow-on human mission to Mars.",
+    "created_at": "2019-10-11T10:43:18.162Z",
+    "updated_at": "2019-10-11T10:43:18.163Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 12,
+  "fields": {
+    "name": "New Shepard",
+    "description": "New Shepard is a vertical-takeoff, vertical-landing, human-rated suborbital rocket that is being developed by Blue Origin as a commercial system for suborbital space tourism.",
+    "created_at": "2019-10-11T10:48:09.149Z",
+    "updated_at": "2019-10-11T10:48:09.149Z",
+    "status": "active"
+  }
+},
+{
   "model": "webapp.issue",
   "pk": 1,
   "fields": {
@@ -7,6 +128,7 @@
     "description": "The problem here is that when using third-party file sharing services, the data is typically taken outside of the company\u2019s IT environment, and that means that the data\u2019s privacy settings are beyond the control of the enterprise.  The best way to avoid such a risk is by ensuring you\u2019re your provider encrypts your files during storage, as well as transit, within a range of 128 to 256-bit.",
     "status": 1,
     "type": 2,
+    "project": null,
     "created_at": "2019-09-27T07:19:07.946Z"
   }
 },
@@ -18,6 +140,7 @@
     "description": "A VPN (Virtual Private Network) will be a great additional tool for the project that will help protect the privacy and increase the security on the Internet. It basically connects two computers securely and privately on the internet",
     "status": 2,
     "type": 1,
+    "project": null,
     "created_at": "2019-09-27T07:22:18.934Z"
   }
 },
@@ -29,6 +152,7 @@
     "description": "The project may be further optimized so that it becomes a smaller size, consumes less memory, executes more rapidly, or performs fewer input/output operations. This enhancement could improve the overall usability of our program.",
     "status": 3,
     "type": 3,
+    "project": 4,
     "created_at": "2019-09-27T07:25:47.873Z"
   }
 },
@@ -40,6 +164,7 @@
     "description": "Call the closest university with a strong business or entrepreneurial program. They generally have a strong network of investors and successful entrepreneurs from their faculty, alumni, and guest speakers. Ask them if they might be able to point you in the direction resources.",
     "status": 1,
     "type": 1,
+    "project": 2,
     "created_at": "2019-09-27T07:29:40.715Z"
   }
 },
@@ -51,6 +176,7 @@
     "description": "Printers are great when they work, but when they don't it can be extremely frustrating and even cause delays to the project. It is necessary to solve a couple of problems, including not printing at all through to blocked nozzles and other issues.",
     "status": 2,
     "type": 1,
+    "project": 2,
     "created_at": "2019-09-27T07:33:36.122Z"
   }
 },
@@ -62,7 +188,68 @@
     "description": "The main website index page has multiple grammatical mistakes that need to be fixed ASAP. This puts a stain on our reputation and presents our company in a bad view.",
     "status": 3,
     "type": 2,
+    "project": null,
     "created_at": "2019-09-27T07:36:06.298Z"
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 7,
+  "fields": {
+    "summary": "Solve wiring issues",
+    "description": "European service module experiences wiring problems including a number of short circuits.",
+    "status": 1,
+    "type": 2,
+    "project": 1,
+    "created_at": "2019-10-10T21:07:17.153Z"
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 8,
+  "fields": {
+    "summary": "Improve orbital habitat",
+    "description": "The habitat requires more living space for astronauts to comfortably stay at the station for long periods of time.",
+    "status": 2,
+    "type": 3,
+    "project": 1,
+    "created_at": "2019-10-11T07:26:37.705Z"
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 9,
+  "fields": {
+    "summary": "Problem with oxydiser tanks",
+    "description": "Oxydiser tank experience anomaly during last testing. Need to investigate.",
+    "status": 1,
+    "type": 2,
+    "project": 1,
+    "created_at": "2019-10-11T07:27:17.049Z"
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 10,
+  "fields": {
+    "summary": "Test Couplings",
+    "description": "New couplings that will be used to connect spaceships to the station need to be tested.",
+    "status": 5,
+    "type": 1,
+    "project": 1,
+    "created_at": "2019-10-11T07:27:50.568Z"
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 11,
+  "fields": {
+    "summary": "Fix bent mirror",
+    "description": "The 5 meter diameter telescope mirror has bin damaged and needs fixing.",
+    "status": 1,
+    "type": 1,
+    "project": 3,
+    "created_at": "2019-10-11T10:14:39.309Z"
   }
 },
 {
@@ -84,6 +271,13 @@
   "pk": 3,
   "fields": {
     "status_name": "Done"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 5,
+  "fields": {
+    "status_name": "Pause"
   }
 },
 {
@@ -112,7 +306,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$RWUjjrCZPSn5$tNq2u9rSyWC0s0Rc5nA/W5kNynRZPQGJKCGJbGm04oQ=",
-    "last_login": "2019-09-26T20:45:21.857Z",
+    "last_login": "2019-10-10T17:34:17.827Z",
     "is_superuser": true,
     "username": "mike",
     "first_name": "",
