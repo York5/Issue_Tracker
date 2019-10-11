@@ -13,7 +13,7 @@
     <h1 class="main_header">Update this Issue</h1>
     <div class="form_container">
         <form class="my_form" method="POST" action="{% url "issue_update" issue.pk %}">
-            {% include 'partial/issue_form.html' with button_text="Update" %}
+            {% include 'partial/form.html' with button_text="Update" %}
         </form>
     </div>
 {% endblock %}

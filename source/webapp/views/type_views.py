@@ -16,9 +16,9 @@ class TypeView(DetailView):
 
 
 class TypeCreateView(CreateView):
+    form_class = TypeForm
     model = Type
     template_name = 'types/type_create.html'
-    fields = ['type_name']
 
     def get_success_url(self):
         return reverse('type_view', kwargs={'pk': self.object.pk})

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block menu %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+        <a class="navbar-brand" href="{% url 'project_index' %}">Projects</a>
+        <a class="nav-link new_nav_btn" href="{% url 'project_delete' project.pk %}">Delete<span class="sr-only">(current)</span></a>
+        <a class="nav-link new_nav_btn" href="{% url 'project_update' project.pk %}">Edit<span class="sr-only">(current)</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+{% endblock %}
+{% block title %}{{ project.project_name }}{% endblock %}
+{% block content %}
+    <h1 class="main_header"><b>{{ project.name}}</b></h1>
+    <h5>Created: <b>{{ project.created_at|date:'d.m.Y H:i:s' }}</b></h5>
+    <h5>Updated: <b>{{ project.updated_at|date:'d.m.Y H:i:s' }}</b></h5>
+    <p><br>{{ project.description|escape|linebreaks }}</p>
+    <hr>
+    <h3>Issues:</h3>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    <div class="issue-list">
+        {% for issue in issues %}
+            <div class="issue">
+                <h1>{{ issue.summary }}</h1>
+                <a class="card_header_link" href="{% url 'issue_view' issue.pk %}"><p>{{ issue.summary }}</p></a>
+                <div class="pre"><p><{{ issue.description }}/p></div>
+            </div>
+        {% empty %}
+            <p>No issues yet.</p>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+{% endif %}
+{% endblock %}

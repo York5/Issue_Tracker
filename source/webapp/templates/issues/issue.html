@@ -17,5 +17,6 @@
     <h5> Status: <b>{{ issue.status}}</b></h5>
     <h5> Type: <b>{{ issue.type}}</b></h5>
     <h5>Created: <b>{{ issue.created_at|date:'d.m.Y H:i:s' }}</b></h5>
+    <h5>Project: <b>{{ issue.project }}</b></h5>
     <p><br>{{ issue.description|escape|linebreaks }}</p>
 {% endblock %}

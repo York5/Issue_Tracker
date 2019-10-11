@@ -21,7 +21,6 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class StatusAdmin(admin.ModelAdmin):
-    model = Status
     exclude = []
     list_display = ['status_name']
     list_filter = ['status_name']
@@ -30,7 +29,6 @@ class StatusAdmin(admin.ModelAdmin):
 
 
 class TypeAdmin(admin.ModelAdmin):
-    model = Type
     exclude = []
     list_display = ['type_name']
     list_filter = ['type_name']

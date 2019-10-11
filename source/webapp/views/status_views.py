@@ -16,9 +16,9 @@ class StatusView(DetailView):
 
 
 class StatusCreateView(CreateView):
+    form_class = StatusForm
     model = Status
     template_name = 'statuses/status_create.html'
-    fields = ['status_name']
 
     def get_success_url(self):
         return reverse('status_view', kwargs={'pk': self.object.pk})

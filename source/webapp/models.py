@@ -5,7 +5,10 @@ class Project(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False, verbose_name='Project Name')
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Description')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Time Created')
-    updated_at = models.DateTimeField(auto_now_add=True, verbose_name='Time Updated')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Time Updated')
+
+    def __str__(self):
+        return self.name
 
 
 class Issue(models.Model):

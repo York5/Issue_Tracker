@@ -19,9 +19,9 @@ class IssueView(DetailView):
 
 
 class IssueCreateView(CreateView):
+    form_class = IssueForm
     model = Issue
     template_name = 'issues/create.html'
-    fields = ['summary', 'description', 'status', 'type']
 
     def get_success_url(self):
         return reverse('issue_view', kwargs={'pk': self.object.pk})

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Delete Project{% endblock %}
+{% block menu %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+        <a class="navbar-brand" href="{% url 'project_index' %}">Projects</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    </nav>
+{% endblock %}
+{% block content %}
+    <h1 class="delete_header">Are you sure you want to delete this Project?</h1>
+    <div class="form_container d-flex">
+        <form class="my_form mt-3" method="POST" action="{% url "project_delete" project.pk %}">
+            {% csrf_token %}
+            <p><input type="submit" class="btn btn-danger my_confirm" value="Confirm Delete"></p>
+            <p class="p_cancel"><a  href="{% url 'project_index' %}" class="cancel btn btn-success btn-lg active" role="button" aria-pressed="true">Cancel</a></p>
+        </form>
+    </div>
+{% endblock %}
