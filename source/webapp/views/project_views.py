@@ -11,8 +11,14 @@ class ProjectIndexView(ListView):
     context_object_name = 'projects'
     model = Project
     ordering = ['-created_at']
-    paginate_by = 4
+    paginate_by = 6
     paginate_orphans = 1
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['active_project'] = self.model.objects.filter(status='active').order_by('created_at')
+        context['closed_project'] = self.model.objects.filter(status='closed').order_by('created_at')
+        return context
 
 
 class ProjectView(DetailView):
