@@ -32,15 +32,11 @@ class ProjectIndexView(ListView):
             )
         return queryset
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['active_project'] = self.model.objects.filter(status='active').order_by('created_at')
-    #     context['closed_project'] = self.model.objects.filter(status='closed').order_by('created_at')
-    #     return context
-
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
         context['form'] = self.form
+    #   context['active_project'] = self.model.objects.filter(status='active').order_by('created_at')
+    #   context['closed_project'] = self.model.objects.filter(status='closed').order_by('created_at')
         if self.search_value:
             context['query'] = urlencode({'search': self.search_value})
         return context

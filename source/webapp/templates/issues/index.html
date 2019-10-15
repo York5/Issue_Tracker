@@ -16,16 +16,12 @@
           <a class="new_review_btn" href="{% url 'project_index' %}">Projects <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    {% include 'partial/simple_search.html' %}
   </div>
 </nav>
 {% endblock %}
 {% block content %}
     <h1 class="main_header">Issues</h1>
-    {% include 'partial/simple_search.html' %}
     <hr/>
     <div class="d-flex">
         <div class="pagination_block">
