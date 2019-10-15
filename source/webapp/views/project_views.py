@@ -1,7 +1,10 @@
+from urllib.parse import urlencode
+
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from webapp.forms import ProjectForm
+from webapp.forms import ProjectForm, SimpleSearchForm
 from webapp.models import Project, STATUS_CHOICES
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -14,10 +17,32 @@ class ProjectIndexView(ListView):
     paginate_by = 6
     paginate_orphans = 1
 
+    def get(self, request, *args, **kwargs):
+        self.form = SimpleSearchForm(data=self.request.GET)
+        self.search = None
+        if self.form.is_valid():
+            self.search_value = self.form.cleaned_data['search']
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.search_value:
+            queryset = queryset.filter(
+                Q(name__icontains=self.search_value)
+            )
+        return queryset
+
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['active_project'] = self.model.objects.filter(status='active').order_by('created_at')
+    #     context['closed_project'] = self.model.objects.filter(status='closed').order_by('created_at')
+    #     return context
+
     def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['active_project'] = self.model.objects.filter(status='active').order_by('created_at')
-        context['closed_project'] = self.model.objects.filter(status='closed').order_by('created_at')
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['form'] = self.form
+        if self.search_value:
+            context['query'] = urlencode({'search': self.search_value})
         return context
 
 

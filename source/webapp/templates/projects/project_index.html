@@ -21,6 +21,7 @@
 </nav>
 {% endblock %}
 {% block content %}
+    {% include 'partial/simple_search.html' %}
     <h1 class="main_header">Active Projects</h1>
     <hr/>
     <div class="d-flex">
@@ -54,7 +55,6 @@
             {% endif %}
         {% endfor %}
     </div>
-
 
     <h1 class="main_header">Closed Projects</h1>
     <hr/>
