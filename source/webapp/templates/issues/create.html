@@ -3,7 +3,7 @@
 {% block title %}Add Issue{% endblock %}
 {% block menu %}
     <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+  <a class="navbar-brand" href="{% url 'webapp:index' %}">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,7 +12,7 @@
 {% block content %}
     <h1 class="main_header">Add new Issue</h1>
     <div class="form_container">
-        <form class="my_form" method="POST" action="{% url "issue_add" %}">
+        <form class="my_form" method="POST" action="{% url "webapp:issue_add" %}">
             {% include 'partial/form.html' with button_text="Create" %}
         </form>
     </div>

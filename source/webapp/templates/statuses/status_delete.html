@@ -2,8 +2,8 @@
 {% block title %}Delete Status{% endblock %}
 {% block menu %}
     <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
-        <a class="navbar-brand" href="{% url 'status_index' %}">Statuses</a>
+        <a class="navbar-brand" href="{% url 'webapp:index' %}">Home</a>
+        <a class="navbar-brand" href="{% url 'webapp:status_index' %}">Statuses</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,10 +12,10 @@
 {% block content %}
     <h1 class="delete_header">Are you sure you want to delete this Status?</h1>
     <div class="form_container d-flex">
-        <form class="my_form mt-3" method="POST" action="{% url "status_delete" status.pk %}">
+        <form class="my_form mt-3" method="POST" action="{% url "webapp:status_delete" status.pk %}">
             {% csrf_token %}
             <p><input type="submit" class="btn btn-danger my_confirm" value="Confirm Delete"></p>
-            <p class="p_cancel"><a  href="{% url 'status_index' %}" class="cancel btn btn-success btn-lg active" role="button" aria-pressed="true">Cancel</a></p>
+            <p class="p_cancel"><a  href="{% url 'webapp:status_index' %}" class="cancel btn btn-success btn-lg active" role="button" aria-pressed="true">Cancel</a></p>
         </form>
     </div>
 {% endblock %}

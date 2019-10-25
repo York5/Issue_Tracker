@@ -1,7 +1,10 @@
 from datetime import timedelta, datetime
 from urllib.parse import urlencode
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
+from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from webapp.forms import IssueForm, SimpleSearchForm
 from webapp.models import Issue
@@ -58,24 +61,32 @@ class IssueCreateView(CreateView):
     model = Issue
     template_name = 'issues/create.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().dispatch(request, *args, **kwargs)
+        return redirect('accounts:login')
+
     def get_success_url(self):
-        return reverse('issue_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:issue_view', kwargs={'pk': self.object.pk})
 
 
-class IssueUpdateView(UpdateView):
+class IssueUpdateView(LoginRequiredMixin, UpdateView):
     model = Issue
     template_name = 'issues/update.html'
     form_class = IssueForm
     context_object_name = 'issue'
 
     def get_success_url(self):
-        return reverse('issue_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:issue_view', kwargs={'pk': self.object.pk})
 
 
-class IssueDeleteView(DeleteView):
+class IssueDeleteView(LoginRequiredMixin, DeleteView):
     model = Issue
     template_name = 'issues/delete.html'
     context_object_name = 'issue'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('webapp:index')
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
 

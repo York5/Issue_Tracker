@@ -2,10 +2,10 @@
 {% load staticfiles %}
 {% block menu %}
     <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
-        <a class="navbar-brand" href="{% url 'type_index' %}">Types</a>
-        <a class="nav-link new_nav_btn" href="{% url 'type_delete' type.pk %}">Delete<span class="sr-only">(current)</span></a>
-        <a class="nav-link new_nav_btn" href="{% url 'type_update' type.pk %}">Edit<span class="sr-only">(current)</span></a>
+        <a class="navbar-brand" href="{% url 'webapp:index' %}">Home</a>
+        <a class="navbar-brand" href="{% url 'webapp:type_index' %}">Types</a>
+        <a class="nav-link new_nav_btn" href="{% url 'webapp:type_delete' type.pk %}">Delete<span class="sr-only">(current)</span></a>
+        <a class="nav-link new_nav_btn" href="{% url 'webapp:type_update' type.pk %}">Edit<span class="sr-only">(current)</span></a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

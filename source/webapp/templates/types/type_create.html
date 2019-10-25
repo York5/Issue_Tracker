@@ -3,8 +3,8 @@
 {% block title %}Add Type{% endblock %}
 {% block menu %}
     <nav class="navbar custom_nav navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
-        <a class="navbar-brand" href="{% url 'type_index' %}">Statuses</a>
+        <a class="navbar-brand" href="{% url 'webapp:index' %}">Home</a>
+        <a class="navbar-brand" href="{% url 'webapp:type_index' %}">Statuses</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,7 +13,7 @@
 {% block content %}
     <h1 class="main_header">Add new Type</h1>
     <div class="form_container">
-        <form class="my_form" method="POST" action="{% url "type_add" %}">
+        <form class="my_form" method="POST" action="{% url "webapp:type_add" %}">
             {% include 'partial/form.html' with button_text="Create" %}
         </form>
     </div>

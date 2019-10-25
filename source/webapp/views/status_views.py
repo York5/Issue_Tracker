@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from webapp.forms import StatusForm
 from webapp.models import Status
@@ -15,27 +16,27 @@ class StatusView(DetailView):
     model = Status
 
 
-class StatusCreateView(CreateView):
+class StatusCreateView(LoginRequiredMixin, CreateView):
     form_class = StatusForm
     model = Status
     template_name = 'statuses/status_create.html'
 
     def get_success_url(self):
-        return reverse('status_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:status_view', kwargs={'pk': self.object.pk})
 
 
-class StatusUpdateView(UpdateView):
+class StatusUpdateView(LoginRequiredMixin, UpdateView):
     model = Status
     template_name = 'statuses/status_update.html'
     form_class = StatusForm
     context_object_name = 'status'
 
     def get_success_url(self):
-        return reverse('status_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:status_view', kwargs={'pk': self.object.pk})
 
 
-class StatusDeleteView(DeleteView):
+class StatusDeleteView(LoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'statuses/status_delete.html'
     context_object_name = 'status'
-    success_url = reverse_lazy('status_index')
+    success_url = reverse_lazy('webapp:status_index')

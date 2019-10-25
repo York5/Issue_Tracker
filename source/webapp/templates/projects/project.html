@@ -2,10 +2,10 @@
 {% load staticfiles %}
 {% block menu %}
     <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
-        <a class="navbar-brand" href="{% url 'project_index' %}">Projects</a>
-        <a class="nav-link new_nav_btn" href="{% url 'project_delete' project.pk %}">Delete<span class="sr-only">(current)</span></a>
-        <a class="nav-link new_nav_btn" href="{% url 'project_update' project.pk %}">Edit<span class="sr-only">(current)</span></a>
+        <a class="navbar-brand" href="{% url 'webapp:index' %}">Home</a>
+        <a class="navbar-brand" href="{% url 'webapp:project_index' %}">Projects</a>
+        <a class="nav-link new_nav_btn" href="{% url 'webapp:project_delete' project.pk %}">Delete<span class="sr-only">(current)</span></a>
+        <a class="nav-link new_nav_btn" href="{% url 'webapp:project_update' project.pk %}">Edit<span class="sr-only">(current)</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,7 +27,7 @@
     <div class="issue-list">
         {% for issue in issues %}
             <div class="issue">
-                <a class="card_header_link" href="{% url 'issue_view' issue.pk %}"><h3>{{ issue.summary }}</h3></a>
+                <a class="card_header_link" href="{% url 'webapp:issue_view' issue.pk %}"><h3>{{ issue.summary }}</h3></a>
                 <div class="pre">{{ issue.description }}</div>
             </div>
         {% empty %}
