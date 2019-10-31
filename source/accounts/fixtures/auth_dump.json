@@ -1,0 +1,110 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$RWUjjrCZPSn5$tNq2u9rSyWC0s0Rc5nA/W5kNynRZPQGJKCGJbGm04oQ=",
+    "last_login": "2019-10-31T12:08:32.680Z",
+    "is_superuser": true,
+    "username": "mike",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-09-26T18:04:14.905Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$cZFlY8NzFqli$1SmegNvy/1X8dcgW0y+oSdChgfBdm3uMc40viDLStPg=",
+    "last_login": "2019-10-29T10:03:43.188Z",
+    "is_superuser": false,
+    "username": "test1",
+    "first_name": "Mike",
+    "last_name": "Vishin",
+    "email": "mikemike@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-29T10:03:42.433Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$CZ7mP9ivnK71$LqJa2FUDPTX50CtQjVvdHmPmflNKEtYKnpZTxDUX+wc=",
+    "last_login": "2019-10-31T11:32:39.818Z",
+    "is_superuser": false,
+    "username": "John",
+    "first_name": "John",
+    "last_name": "Travolta",
+    "email": "johntravolta@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-31T11:02:07Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$R9UtXgvOIpcN$jKWukAKh7Z1rPRnpccuJiVle/n5BjGoaya882v7jROc=",
+    "last_login": "2019-10-31T12:07:21.989Z",
+    "is_superuser": false,
+    "username": "Jack",
+    "first_name": "Jack",
+    "last_name": "Black",
+    "email": "jackblack@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-31T12:07:21.255Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$yspxEuVy7j8U$Yik+yD9bq5Vk1Noi455AKXLjVhVBo3/fJA5nD3L3wUI=",
+    "last_login": "2019-10-31T12:07:59.275Z",
+    "is_superuser": false,
+    "username": "Elon",
+    "first_name": "Elon",
+    "last_name": "Mask",
+    "email": "elonmusk@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-31T12:07:58.560Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$c1Mt2FS7DWoX$HAaG0fallou6JNDBMe4o5nH57a54UZueS1UzvUA/QMs=",
+    "last_login": "2019-10-31T12:11:03.838Z",
+    "is_superuser": false,
+    "username": "Davy",
+    "first_name": "Davy",
+    "last_name": "Johns",
+    "email": "davyjohns@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-31T12:11:03.098Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
