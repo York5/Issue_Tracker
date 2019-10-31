@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ user_obj.username }}{% endblock %}
+{% block menu %}
+    <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="{% url 'webapp:index' %}">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+           {% if user_obj == request.user %}
+{#                <a class="new_review_btn" href="{% url 'accounts:user_update' %}">Edit Profile<span class="sr-only">(current)</span></a>#}
+{#                <a class="new_review_btn" href="{% url 'accounts:user_change_password' %}">Change Password<span class="sr-only">(current)</span></a>#}
+            {% endif %}
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+{% block content %}
+    <h1 class="main_header">Profile: {{ user_obj.username }}</h1>
+    <p>First Name: <b>{{ user_obj.first_name }}</b></p>
+    <p>Last Name: {{ user_obj.last_name }}</p>
+    <p>Email: {{ user_obj.email }}</p>
+{% endblock %}
