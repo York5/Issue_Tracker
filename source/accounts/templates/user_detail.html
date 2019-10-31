@@ -11,7 +11,7 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
            {% if user_obj == request.user %}
-{#                <a class="new_review_btn" href="{% url 'accounts:user_update' %}">Edit Profile<span class="sr-only">(current)</span></a>#}
+                <a class="new_review_btn" href="{% url 'accounts:user_update' user_obj.pk %}">Edit Profile<span class="sr-only">(current)</span></a>
 {#                <a class="new_review_btn" href="{% url 'accounts:user_change_password' %}">Change Password<span class="sr-only">(current)</span></a>#}
             {% endif %}
       </li>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Personal Profile{% endblock %}
+{% block menu %}
+    <nav class="navbar custom_nav navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{% url 'webapp:index' %}">Home</a>
+        {% if user_obj == request.user %}
+            <a class="new_review_btn" href="{% url 'accounts:user_detail' user_obj.pk %}">View<span class="sr-only">(current)</span></a>
+{#            <a class="new_review_btn" href="{% url 'accounts:user_change_password' %}">Change Password<span class="sr-only">(current)</span></a>#}
+        {% endif %}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+{% endblock %}
+{% block content %}
+    <h1 class="main_header">Edit Profile {{ user_obj.username }}</h1>
+    <div class="form_container">
+         <form action="{% url 'accounts:user_update' user_obj.pk %}" method="post">
+            {% include 'partial/form.html' with button_text="Update" %}
+         </form>
+    </div>
+{% endblock %}

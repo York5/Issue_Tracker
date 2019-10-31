@@ -40,3 +40,8 @@ class UserCreationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password', 'password_confirm', 'first_name', 'last_name', 'email']
+
+    class UserChangeForm(forms.ModelForm):
+        class Meta:
+            model = User
+            fields = ['first_name', 'last_name', 'email']
